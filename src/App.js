@@ -4,7 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import 'react-syntax-highlighter/dist/esm/styles/prism/solarizedlight';
 import language from 'react-syntax-highlighter/dist/esm/languages/hljs/1c';
-
+import './App.css';
 
 
 const App = () => {
@@ -133,6 +133,7 @@ const handleChange = (event) => {
               <a
                 href={'http://localhost:5000/api/pastes/' + paste.slug}
                 target="_blank"
+                rel = "noreferrer"
                // onClick={(e) => handleLinkClick(e, paste.slug)}
               >
                 View Paste
