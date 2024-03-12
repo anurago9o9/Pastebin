@@ -38,7 +38,7 @@ const handleChange = (event) => {
 
   const fetchPastes = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/pastes'); 
+      const response = await axios.get('http://192.168.0.105:5000/api/pastes'); 
       setPastes(response.data);
     } catch (error) {
       console.error('Error fetching pastes:', error);
@@ -47,7 +47,7 @@ const handleChange = (event) => {
 
   const createPaste = async () => {
     try {
-      await axios.post('http://localhost:5000/api/pastes', { content: newPasteContent, language:language, slug:null }); 
+      await axios.post('http://192.168.0.105:5000/api/pastes', { content: newPasteContent, language:language, slug:null }); 
       // Refresh the paste list
       fetchPastes();
       // Clear the input field
@@ -59,7 +59,7 @@ const handleChange = (event) => {
 
   const updatePaste = async (id) => {
   try {
-    await axios.put(`http://localhost:5000/api/pastes/${id}`, { content: updatedPasteContent, language:language, slug:null }); 
+    await axios.put(`http://192.168.0.105:5000/api/pastes/${id}`, { content: updatedPasteContent, language:language, slug:null }); 
     // Reset editing state
     setEditingPasteId(null);
     setUpdatedPasteContent('');
@@ -73,7 +73,7 @@ const handleChange = (event) => {
 
   const deletePaste = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/pastes/${id}`); 
+      await axios.delete(`http://192.168.0.105:5000/api/pastes/${id}`); 
       // Refresh the paste list
       fetchPastes();
     } catch (error) {
@@ -131,7 +131,7 @@ const handleChange = (event) => {
                {paste.content}
                </SyntaxHighlighter>
               <a
-                href={'http://localhost:5000/api/pastes/' + paste.slug}
+                href={'http://192.168.0.105:5000/api/pastes/' + paste.slug}
                 target="_blank"
                 rel = "noreferrer"
                // onClick={(e) => handleLinkClick(e, paste.slug)}

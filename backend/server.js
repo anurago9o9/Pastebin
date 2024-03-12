@@ -2,12 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const shortid = require('shortid');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/pastebin', {
+mongoose.connect('mongodb+srv://anuragsing0909:smuqka4NfS4FTClj@cluster0.29dzwvi.mongodb.net/pastebin', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -100,6 +101,12 @@ app.delete('/api/pastes/:id', async (req, res) => {
     console.error('Error deleting paste:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
+});
+
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
 
 app.listen(PORT, () => {
